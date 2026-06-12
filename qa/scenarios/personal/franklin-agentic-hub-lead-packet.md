@@ -29,6 +29,8 @@ docsRefs:
   - docs/gateway/security/exposure-runbook.md
 codeRefs:
   - scripts/franklin-agentic-hub/lead-packet.schema.json
+  - scripts/franklin-agentic-hub/import-lead-packet.mjs
+  - scripts/franklin-agentic-hub/test-import-lead-packet.mjs
   - scripts/franklin-agentic-hub/validate-lead-packet.mjs
   - scripts/franklin-agentic-hub/test-lead-packet-validator.mjs
 execution:
@@ -58,5 +60,17 @@ node scripts/franklin-agentic-hub/validate-lead-packet.mjs <packet.json>
 node scripts/franklin-agentic-hub/test-lead-packet-validator.mjs
 ```
 
-6. Confirm the packet stays in Agentic-Hub as `pending_review`.
-7. Confirm no email, DM, CRM write, or signed-in browser action occurred.
+6. Import the packet into a local pending-review queue:
+
+```bash
+node scripts/franklin-agentic-hub/import-lead-packet.mjs <packet.json> /tmp/agentic-hub-review
+```
+
+7. Run:
+
+```bash
+node scripts/franklin-agentic-hub/test-import-lead-packet.mjs
+```
+
+8. Confirm the packet stays in Agentic-Hub as `pending_review`.
+9. Confirm no email, DM, CRM write, or signed-in browser action occurred.

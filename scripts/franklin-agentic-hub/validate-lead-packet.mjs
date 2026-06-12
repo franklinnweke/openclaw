@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { pathToFileURL } from "node:url";
 
 const USAGE = "Usage: node scripts/franklin-agentic-hub/validate-lead-packet.mjs <packet.json>";
 const REQUIRED_TOP_LEVEL = [
@@ -47,7 +48,7 @@ function push(condition, errors, message) {
   }
 }
 
-function validatePacket(packet) {
+export function validatePacket(packet) {
   const errors = [];
 
   push(isObject(packet), errors, "packet must be an object");
@@ -195,5 +196,6 @@ function main() {
   console.log(`Lead packet valid: ${abs}`);
 }
 
-main();
-
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main();
+}
