@@ -121,6 +121,9 @@ Flow:
 4. `scripts/franklin-agentic-hub/validate-lead-packet.mjs` validates the packet.
 5. `scripts/franklin-agentic-hub/import-lead-packet.mjs` appends valid packets
    to a local `pending_review.jsonl` queue.
+   For directory intake, `scripts/franklin-agentic-hub/process-incoming-leads.mjs`
+   processes all incoming JSON packets and writes invalid packets to
+   `rejected_imports.jsonl`.
 6. `scripts/franklin-agentic-hub/decide-lead-packet.mjs` records Franklin's
    explicit approve/reject decision in `decisions.jsonl`.
 7. Only approved packets can produce draft preparation tasks. Email, DM, CRM,
@@ -216,6 +219,8 @@ Minimum proof before live use:
 - lead packet validator rejects approval bypass packets that do not record an
   explicit Franklin approval rationale,
 - lead packet importer writes only to a `pending_review` queue,
+- incoming lead batch processing separates valid pending review packets from
+  rejected imports,
 - lead packet decisions require a human rationale and reject duplicate
   decisions,
 - portfolio proof packets require public-safe evidence and reject private
@@ -242,6 +247,8 @@ node scripts/franklin-workflows/test-all.mjs
 - `scripts/franklin-agentic-hub/test-decide-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/import-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/test-import-lead-packet.mjs`
+- `scripts/franklin-agentic-hub/process-incoming-leads.mjs`
+- `scripts/franklin-agentic-hub/test-process-incoming-leads.mjs`
 - `scripts/franklin-agentic-hub/validate-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/test-lead-packet-validator.mjs`
 - `scripts/franklin-portfolio-proof/portfolio-proof.schema.json`

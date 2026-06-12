@@ -32,6 +32,8 @@ codeRefs:
   - scripts/franklin-agentic-hub/decide-lead-packet.mjs
   - scripts/franklin-agentic-hub/test-decide-lead-packet.mjs
   - scripts/franklin-agentic-hub/import-lead-packet.mjs
+  - scripts/franklin-agentic-hub/process-incoming-leads.mjs
+  - scripts/franklin-agentic-hub/test-process-incoming-leads.mjs
   - scripts/franklin-agentic-hub/test-import-lead-packet.mjs
   - scripts/franklin-agentic-hub/validate-lead-packet.mjs
   - scripts/franklin-agentic-hub/test-lead-packet-validator.mjs
@@ -74,18 +76,25 @@ node scripts/franklin-agentic-hub/import-lead-packet.mjs <packet.json> /tmp/agen
 node scripts/franklin-agentic-hub/test-import-lead-packet.mjs
 ```
 
-8. Record a human decision:
+8. For directory intake, run:
+
+```bash
+node scripts/franklin-agentic-hub/process-incoming-leads.mjs <incoming-dir> /tmp/agentic-hub-review
+node scripts/franklin-agentic-hub/test-process-incoming-leads.mjs
+```
+
+9. Record a human decision:
 
 ```bash
 node scripts/franklin-agentic-hub/decide-lead-packet.mjs /tmp/agentic-hub-review <task-id> approve "Franklin approved this lead for draft preparation only."
 ```
 
-9. Run:
+10. Run:
 
 ```bash
 node scripts/franklin-agentic-hub/test-decide-lead-packet.mjs
 ```
 
-10. Confirm the packet stays auditable in Agentic-Hub as `pending_review` with
+11. Confirm the packet stays auditable in Agentic-Hub as `pending_review` with
     a separate decision event.
-11. Confirm no email, DM, CRM write, or signed-in browser action occurred.
+12. Confirm no email, DM, CRM write, or signed-in browser action occurred.

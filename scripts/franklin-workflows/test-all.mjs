@@ -5,6 +5,7 @@ import process from "node:process";
 const checks = [
   "scripts/franklin-agentic-hub/test-lead-packet-validator.mjs",
   "scripts/franklin-agentic-hub/test-import-lead-packet.mjs",
+  "scripts/franklin-agentic-hub/test-process-incoming-leads.mjs",
   "scripts/franklin-agentic-hub/test-decide-lead-packet.mjs",
   "scripts/franklin-portfolio-proof/test-portfolio-proof-validator.mjs",
   "scripts/franklin-vps-lab/test-preflight-check.mjs",
