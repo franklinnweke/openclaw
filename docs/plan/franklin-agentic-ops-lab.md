@@ -127,6 +127,26 @@ Flow:
    signed-in browser use, and other outbound actions remain separate approval
    gates.
 
+## Portfolio proof contract
+
+OpenClaw portfolio work should return public-safe proof packets, not publish
+claims directly.
+
+Flow:
+
+1. Franklin or Agentic-Hub selects a project milestone, commit, screenshot, QA
+   run, or implementation note.
+2. OpenClaw drafts a portfolio proof packet using the
+   `franklin-portfolio-proof` skill.
+3. `scripts/franklin-portfolio-proof/validate-portfolio-proof.mjs` validates
+   the packet.
+4. Franklin reviews the packet before it becomes portfolio copy, outreach copy,
+   resume material, or job-search evidence.
+
+The proof packet must include evidence references, risk notes, and next actions.
+It must not include private client revenue, customer data, credentials, secrets,
+or unsupported autonomy claims.
+
 The packet must include:
 
 - task id,
@@ -195,6 +215,8 @@ Minimum proof before live use:
 - lead packet importer writes only to a `pending_review` queue,
 - lead packet decisions require a human rationale and reject duplicate
   decisions,
+- portfolio proof packets require public-safe evidence and reject private
+  client or credential claims,
 - outbound action requests stay in `approval_gate.status = "required"`,
 - no fake secret appears in a visible QA-channel reply,
 - browser QA uses isolated profile,
@@ -212,4 +234,8 @@ Minimum proof before live use:
 - `scripts/franklin-agentic-hub/test-import-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/validate-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/test-lead-packet-validator.mjs`
+- `scripts/franklin-portfolio-proof/portfolio-proof.schema.json`
+- `scripts/franklin-portfolio-proof/validate-portfolio-proof.mjs`
+- `scripts/franklin-portfolio-proof/test-portfolio-proof-validator.mjs`
 - `qa/scenarios/personal/franklin-agentic-hub-lead-packet.md`
+- `qa/scenarios/personal/franklin-portfolio-proof-packet.md`

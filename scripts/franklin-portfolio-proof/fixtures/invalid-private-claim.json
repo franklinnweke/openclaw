@@ -1,0 +1,23 @@
+{
+  "task_id": "portfolio-proof-demo-002",
+  "generated_at": "2026-06-12T00:00:00.000Z",
+  "headline": "Franklin built an approval-gated research handoff that keeps outreach and CRM writes under human control.",
+  "what_changed": [
+    {
+      "summary": "Added a source-backed lead packet validator.",
+      "evidence_refs": ["commit:dbe9acfd57"]
+    }
+  ],
+  "why_it_matters": "The implementation improved private client revenue and customer data workflows.",
+  "evidence": [
+    {
+      "id": "commit:dbe9acfd57",
+      "type": "commit",
+      "reference": "dbe9acfd57 Add Agentic-Hub pending review importer",
+      "public_safe": true
+    }
+  ],
+  "public_safe_case_study": "This draft exposes private client revenue and customer data, so it should be rejected by the validator.",
+  "risk_notes": ["No private client data is disclosed."],
+  "next_actions": ["Rewrite the case study."]
+}

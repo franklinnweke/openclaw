@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/franklin-portfolio-proof/portfolio-proof.schema.json",
+  "title": "Franklin Portfolio Proof Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "generated_at",
+    "headline",
+    "what_changed",
+    "why_it_matters",
+    "evidence",
+    "public_safe_case_study",
+    "risk_notes",
+    "next_actions"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "headline": { "type": "string", "minLength": 12, "maxLength": 180 },
+    "what_changed": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["summary", "evidence_refs"],
+        "properties": {
+          "summary": { "type": "string", "minLength": 1 },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "why_it_matters": { "type": "string", "minLength": 1 },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "reference", "public_safe"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "type": {
+            "type": "string",
+            "enum": ["commit", "file", "screenshot", "test_output", "run_history", "issue", "other"]
+          },
+          "reference": { "type": "string", "minLength": 1 },
+          "public_safe": { "type": "boolean" }
+        }
+      }
+    },
+    "public_safe_case_study": { "type": "string", "minLength": 40 },
+    "risk_notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

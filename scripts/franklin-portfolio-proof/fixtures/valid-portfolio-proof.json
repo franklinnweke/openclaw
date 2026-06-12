@@ -1,0 +1,39 @@
+{
+  "task_id": "portfolio-proof-demo-001",
+  "generated_at": "2026-06-12T00:00:00.000Z",
+  "headline": "Franklin built an approval-gated research handoff that keeps outreach and CRM writes under human control.",
+  "what_changed": [
+    {
+      "summary": "Added a source-backed lead packet validator and importer for pending review.",
+      "evidence_refs": ["commit:dbe9acfd57", "test:test-import-lead-packet"]
+    },
+    {
+      "summary": "Added explicit approval-decision audit records before draft preparation.",
+      "evidence_refs": ["commit:d381c0f17e", "test:test-decide-lead-packet"]
+    }
+  ],
+  "why_it_matters": "This gives Agentic-Hub a practical pattern for AI-assisted research without granting agents authority to send outreach, update CRM records, or use signed-in browser sessions.",
+  "evidence": [
+    {
+      "id": "commit:dbe9acfd57",
+      "type": "commit",
+      "reference": "dbe9acfd57 Add Agentic-Hub pending review importer",
+      "public_safe": true
+    },
+    {
+      "id": "test:test-decide-lead-packet",
+      "type": "test_output",
+      "reference": "PASS records approval with outbound actions still prohibited",
+      "public_safe": true
+    }
+  ],
+  "public_safe_case_study": "For Agentic-Hub, Franklin created a lightweight contract where research outputs are validated, imported into pending review, and only moved forward after a named human decision. The implementation demonstrates practical AI workflow automation with auditability and clear limits instead of claiming full autonomy.",
+  "risk_notes": [
+    "No private client data is disclosed.",
+    "No email, DM, CRM write, or signed-in browser action is automated."
+  ],
+  "next_actions": [
+    "Capture a screenshot of the pending-review queue.",
+    "Turn this proof packet into a concise portfolio update."
+  ]
+}

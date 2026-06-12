@@ -1,0 +1,16 @@
+{
+  "task_id": "portfolio-proof-demo-003",
+  "generated_at": "2026-06-12T00:00:00.000Z",
+  "headline": "Franklin built an approval-gated research handoff that keeps outreach and CRM writes under human control.",
+  "what_changed": [
+    {
+      "summary": "Added a source-backed lead packet validator.",
+      "evidence_refs": ["commit:dbe9acfd57"]
+    }
+  ],
+  "why_it_matters": "This gives Agentic-Hub a practical pattern for AI-assisted research with auditability.",
+  "evidence": [],
+  "public_safe_case_study": "For Agentic-Hub, Franklin created a lightweight contract where research outputs are validated and imported into pending review before a named human decision.",
+  "risk_notes": ["No private client data is disclosed."],
+  "next_actions": ["Capture evidence."]
+}
