@@ -227,6 +227,12 @@ Minimum proof before live use:
 - cron or command jobs leave auditable run history,
 - memory writes are short, sourced, and public-safe.
 
+Run all Franklin workflow checks before each pushed milestone:
+
+```bash
+node scripts/franklin-workflows/test-all.mjs
+```
+
 ## Related files
 
 - `skills/franklin-lead-research/SKILL.md`
@@ -244,5 +250,6 @@ Minimum proof before live use:
 - `docs/plan/franklin-vps-runtime-lab.md`
 - `scripts/franklin-vps-lab/preflight-check.mjs`
 - `scripts/franklin-vps-lab/test-preflight-check.mjs`
+- `scripts/franklin-workflows/test-all.mjs`
 - `qa/scenarios/personal/franklin-agentic-hub-lead-packet.md`
 - `qa/scenarios/personal/franklin-portfolio-proof-packet.md`
