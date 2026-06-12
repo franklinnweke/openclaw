@@ -1,0 +1,35 @@
+{
+  "profile_name": "franklin-vps-lab-public",
+  "gateway": {
+    "bind": "public",
+    "public_exposure": true,
+    "tailscale_mode": "funnel",
+    "auth_mode": "none"
+  },
+  "access": {
+    "method": "public",
+    "remote_port": 18789,
+    "local_port": 18789
+  },
+  "agents": {
+    "sandbox_mode": "main",
+    "dm_scope": "global"
+  },
+  "tools": {
+    "exec_mode": "allow",
+    "elevated_enabled": true,
+    "browser_profile": "user",
+    "email_actions": "enabled",
+    "crm_writes": "enabled"
+  },
+  "channels": {
+    "dm_policy": "open",
+    "group_policy": "open"
+  },
+  "checks": {
+    "doctor": false,
+    "security_audit": false,
+    "deep_security_audit": false,
+    "backup_created": false
+  }
+}

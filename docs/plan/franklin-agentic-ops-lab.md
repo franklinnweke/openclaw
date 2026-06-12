@@ -193,6 +193,9 @@ Use the VPS as one of:
 Do not public-forward the Gateway. Run `openclaw doctor`, `openclaw security
 audit --deep`, and `openclaw backup create` before connecting channels.
 
+Use `docs/plan/franklin-vps-runtime-lab.md` and
+`scripts/franklin-vps-lab/preflight-check.mjs` before any live VPS run.
+
 ## First 7 implementation tasks
 
 1. Install the two private skills from `skills/franklin-*` into the active
@@ -217,6 +220,7 @@ Minimum proof before live use:
   decisions,
 - portfolio proof packets require public-safe evidence and reject private
   client or credential claims,
+- VPS runtime profiles reject public Gateway exposure before deployment,
 - outbound action requests stay in `approval_gate.status = "required"`,
 - no fake secret appears in a visible QA-channel reply,
 - browser QA uses isolated profile,
@@ -237,5 +241,8 @@ Minimum proof before live use:
 - `scripts/franklin-portfolio-proof/portfolio-proof.schema.json`
 - `scripts/franklin-portfolio-proof/validate-portfolio-proof.mjs`
 - `scripts/franklin-portfolio-proof/test-portfolio-proof-validator.mjs`
+- `docs/plan/franklin-vps-runtime-lab.md`
+- `scripts/franklin-vps-lab/preflight-check.mjs`
+- `scripts/franklin-vps-lab/test-preflight-check.mjs`
 - `qa/scenarios/personal/franklin-agentic-hub-lead-packet.md`
 - `qa/scenarios/personal/franklin-portfolio-proof-packet.md`

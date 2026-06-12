@@ -1,0 +1,35 @@
+{
+  "profile_name": "franklin-vps-lab",
+  "gateway": {
+    "bind": "loopback",
+    "public_exposure": false,
+    "tailscale_mode": "off",
+    "auth_mode": "token"
+  },
+  "access": {
+    "method": "ssh_tunnel",
+    "remote_port": 18789,
+    "local_port": 18789
+  },
+  "agents": {
+    "sandbox_mode": "non-main",
+    "dm_scope": "per-channel-peer"
+  },
+  "tools": {
+    "exec_mode": "ask",
+    "elevated_enabled": false,
+    "browser_profile": "isolated",
+    "email_actions": "disabled",
+    "crm_writes": "disabled"
+  },
+  "channels": {
+    "dm_policy": "disabled",
+    "group_policy": "disabled"
+  },
+  "checks": {
+    "doctor": true,
+    "security_audit": true,
+    "deep_security_audit": true,
+    "backup_created": true
+  }
+}
