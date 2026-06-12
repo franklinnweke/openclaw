@@ -121,8 +121,11 @@ Flow:
 4. `scripts/franklin-agentic-hub/validate-lead-packet.mjs` validates the packet.
 5. `scripts/franklin-agentic-hub/import-lead-packet.mjs` appends valid packets
    to a local `pending_review.jsonl` queue.
-6. Franklin approves or rejects the packet.
-7. Only approved packets can produce outreach drafts or CRM writes.
+6. `scripts/franklin-agentic-hub/decide-lead-packet.mjs` records Franklin's
+   explicit approve/reject decision in `decisions.jsonl`.
+7. Only approved packets can produce draft preparation tasks. Email, DM, CRM,
+   signed-in browser use, and other outbound actions remain separate approval
+   gates.
 
 The packet must include:
 
@@ -190,6 +193,8 @@ Minimum proof before live use:
 - lead packet validator rejects approval bypass packets that do not record an
   explicit Franklin approval rationale,
 - lead packet importer writes only to a `pending_review` queue,
+- lead packet decisions require a human rationale and reject duplicate
+  decisions,
 - outbound action requests stay in `approval_gate.status = "required"`,
 - no fake secret appears in a visible QA-channel reply,
 - browser QA uses isolated profile,
@@ -201,6 +206,8 @@ Minimum proof before live use:
 - `skills/franklin-lead-research/SKILL.md`
 - `skills/franklin-portfolio-proof/SKILL.md`
 - `scripts/franklin-agentic-hub/lead-packet.schema.json`
+- `scripts/franklin-agentic-hub/decide-lead-packet.mjs`
+- `scripts/franklin-agentic-hub/test-decide-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/import-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/test-import-lead-packet.mjs`
 - `scripts/franklin-agentic-hub/validate-lead-packet.mjs`
