@@ -1,0 +1,37 @@
+{
+  "task_id": "lead-example-002",
+  "generated_at": "2026-06-11T18:00:00.000Z",
+  "lead": {
+    "company_name": "Example Studio",
+    "website": "https://example.com",
+    "location": "Toronto, Canada",
+    "industry": "Fashion services",
+    "decision_makers": [
+      {
+        "name": "Taylor Example",
+        "role": "Founder",
+        "source_url": "https://example.com/about",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "fit": {
+    "summary": "The public website suggests room for booking and client intake workflow improvements.",
+    "service_angles": ["booking flow QA", "operations automation"],
+    "confidence": "medium"
+  },
+  "findings": [
+    {
+      "claim": "The company publishes service information on its website.",
+      "source_type": "company_site",
+      "confidence": "high"
+    }
+  ],
+  "risks": ["Public information only; no signed-in research was used."],
+  "recommended_next_action": "Draft a human-reviewed intro angle before any outreach.",
+  "approval_gate": {
+    "status": "required",
+    "reason": "Franklin must approve any outreach or CRM write.",
+    "prohibited_actions": ["send_email", "send_dm", "write_crm", "use_signed_in_browser"]
+  }
+}

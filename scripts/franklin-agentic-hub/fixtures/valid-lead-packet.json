@@ -1,0 +1,32 @@
+{
+  "task_id": "lead_research_demo_001",
+  "generated_at": "2026-06-12T00:00:00.000Z",
+  "lead": {
+    "company_name": "Example Studio",
+    "website": "https://example.com",
+    "location": "Toronto, Canada",
+    "industry": "commerce",
+    "decision_makers": []
+  },
+  "fit": {
+    "summary": "Public website suggests a service business that may benefit from workflow automation and booking-flow QA.",
+    "service_angles": ["website_qa", "workflow_automation"],
+    "confidence": "medium"
+  },
+  "findings": [
+    {
+      "claim": "The company operates a public website.",
+      "source_url": "https://example.com",
+      "source_type": "company_site",
+      "confidence": "high"
+    }
+  ],
+  "risks": ["Demo packet only; no real lead has been verified."],
+  "recommended_next_action": "Human review before drafting any outreach.",
+  "approval_gate": {
+    "status": "required",
+    "reason": "Outbound outreach and CRM writes require Franklin approval.",
+    "prohibited_actions": ["send_email", "send_dm", "write_crm"]
+  }
+}
+

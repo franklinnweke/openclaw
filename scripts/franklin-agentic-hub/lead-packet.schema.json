@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/franklin-agentic-hub/lead-packet.schema.json",
+  "title": "Franklin Agentic-Hub Lead Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "generated_at",
+    "lead",
+    "fit",
+    "findings",
+    "risks",
+    "recommended_next_action",
+    "approval_gate"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lead": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["company_name", "website", "location", "industry", "decision_makers"],
+      "properties": {
+        "company_name": { "type": "string", "minLength": 1 },
+        "website": { "type": "string", "minLength": 1 },
+        "location": { "type": "string", "minLength": 1 },
+        "industry": { "type": "string", "minLength": 1 },
+        "decision_makers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "role", "source_url", "confidence"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "role": { "type": "string", "minLength": 1 },
+              "source_url": { "type": "string", "minLength": 1 },
+              "confidence": { "$ref": "#/$defs/confidence" }
+            }
+          }
+        }
+      }
+    },
+    "fit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "service_angles", "confidence"],
+      "properties": {
+        "summary": { "type": "string", "minLength": 1 },
+        "service_angles": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim", "source_url", "source_type", "confidence"],
+        "properties": {
+          "claim": { "type": "string", "minLength": 1 },
+          "source_url": { "type": "string", "minLength": 1 },
+          "source_type": {
+            "type": "string",
+            "enum": ["company_site", "official_profile", "registry", "marketplace", "article", "directory", "other"]
+          },
+          "confidence": { "$ref": "#/$defs/confidence" }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommended_next_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason", "prohibited_actions"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["required", "approved", "rejected"]
+        },
+        "reason": { "type": "string", "minLength": 1 },
+        "prohibited_actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": ["send_email", "send_dm", "write_crm", "use_signed_in_browser", "deploy", "purchase"]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    }
+  }
+}
+
